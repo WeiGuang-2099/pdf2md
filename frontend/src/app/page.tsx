@@ -34,7 +34,11 @@ export default function Home() {
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({ error: 'Conversion failed' }));
-        throw new Error(errorData.error || '转换失败');
+        const errorMessage = errorData.details
+          ? `${errorData.error}: ${JSON.stringify(errorData.details)}`
+          : errorData.error || '转换失败';
+        console.error('API Error:', errorData);
+        throw new Error(errorMessage);
       }
 
       const data = await response.json();
