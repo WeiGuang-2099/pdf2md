@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  pdf-to-markdown:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pdf-to-markdown
+    ports:
+      - "3000:3000"
+      - "8001:8001"
+    environment:
+      - PORT=3000
+      - MARKER_PORT=8001
+      - TORCH_DEVICE=cpu
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+      - PYTHONUNBUFFERED=1
+    volumes:
+      # Mount uploads directory for persistence (optional)
+      - uploads:/tmp/uploads
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
+        reservations:
+          cpus: '1'
+          memory: 2G
+
+volumes:
+  uploads:
+    driver: local

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(dir:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: PDF to Markdown converter\n\n- Next.js frontend with drag-and-drop upload\n- FastAPI backend using marker-pdf\n- Support for long PDF conversions \\(1 hour timeout\\)\n- Axios for reliable HTTP requests\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+    ]
+  }
+}
