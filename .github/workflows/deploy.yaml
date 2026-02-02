@@ -103,7 +103,7 @@ jobs:
             --max-instances=10 \
             --min-instances=0 \
             --allow-unauthenticated \
-            --set-env-vars=TORCH_DEVICE=${{ env.TORCH_DEVICE }},MARKER_PORT=${{ env.MARKER_PORT },NODE_ENV=production,NEXT_TELEMETRY_DISABLED=1,PYTHONUNBUFFERED=1 \
+            --set-env-vars=TORCH_DEVICE=${{ env.TORCH_DEVICE }},MARKER_PORT=${{ env.MARKER_PORT }},NODE_ENV=production,NEXT_TELEMETRY_DISABLED=1,PYTHONUNBUFFERED=1 \
             --labels=commit-sha=${{ github.sha }},workflow-run=${{ github.run_number }},environment=${{ github.event.inputs.environment || 'production' }}
 
       # Get service URL
@@ -217,7 +217,7 @@ jobs:
             --max-instances=5 \
             --min-instances=0 \
             --allow-unauthenticated \
-            --set-env-vars=TORCH_DEVICE=cuda,MARKER_PORT=${{ env.MARKER_PORT },NODE_ENV=production,NEXT_TELEMETRY_DISABLED=1,PYTHONUNBUFFERED=1
+            --set-env-vars=TORCH_DEVICE=cuda,MARKER_PORT=${{ env.MARKER_PORT }},NODE_ENV=production,NEXT_TELEMETRY_DISABLED=1,PYTHONUNBUFFERED=1
 
       - name: Get GPU Service URL
         id: gpu-service-url
